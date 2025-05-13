@@ -6,7 +6,7 @@ export default function Main() {
       <Image className='portrait' src="portrait.svg" alt='placeholder' height={250} width={250} />
       <div className='title-header'>
         <h1>
-          MiMi's
+          MiMi&apos;s
         </h1>
         <h2>
           WORKSHOP
