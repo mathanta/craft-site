@@ -1,6 +1,7 @@
 'use client'
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
+/*import CraftCard from '../../components/craftcards';*/
 
 export default function Main() {
   const [status, setStatus] = useState('');
@@ -34,6 +35,7 @@ export default function Main() {
           </div>
         </div>
       )}
+
 
       <div className="contact-form-container">
         <form onSubmit={handleSubmit}>
