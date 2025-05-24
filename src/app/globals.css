@@ -322,11 +322,6 @@ footer {
   gap: 5px;
 }
 
-.footer-content:hover {
-  opacity: 0.2;
-  animation: fadeInOut 0.2s ease;
-}
-
 /* Under Construction Banner */
 .ribbon {
   opacity: 0.5;

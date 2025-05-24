@@ -12,13 +12,13 @@ export async function GET() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/crafts/manifest.json`);
   const imageFilesRaw: string[] = await res.json();
 
-  // Filter out manifest.json itself (if present)
   const imageFiles = imageFilesRaw.filter((file) => file !== 'manifest.json');
 
   const groupedImages = imageFiles.reduce<Record<string, GroupedImage>>((acc, file) => {
-    const baseName = file
-      .replace(/^featured-/, '')
-      .replace(/\d+\.(jpg|jpeg|png|JPEG)$/i, '');
+    const cleanName = file
+      .replace(/^featured-/, '')           // remove "featured-" prefix
+      .replace(/\.(jpg|jpeg|png)$/i, '');  // remove file extension
+    const baseName = cleanName.replace(/-\d+$/, ''); // remove trailing "-1", "-2", etc.
 
     if (!acc[baseName]) {
       acc[baseName] = {
@@ -38,12 +38,11 @@ export async function GET() {
   const images = Object.entries(groupedImages).map(([baseName, data]) => ({
     images: data.images,
     title: baseName
-      .replace(/\.(jpg|jpeg|png|JPEG)$/i, '')
       .replace(/-/g, ' ')
       .split(' ')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' '),
-    description: descriptions[baseName + '.png'] || 'Coming soon...',
+    description: descriptions[baseName] || 'Coming soon...',
     featured: data.featured,
   }));
 
