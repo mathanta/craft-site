@@ -28,12 +28,13 @@ const CraftCard = ({ images, title, description }: CraftProps) => {
                 <h3 id='picture-title'>{title}</h3>
                 <div className='picture-wrapper'>
                     <Image
-                        src={images[currentImage]}
-                        alt={`${title}`}
-                        className="picture"
+                        className='picture'
+                        src={`${images[currentImage]}?width=200&quality=80&format=auto`}
+                        alt={title}
                         width={200}
                         height={200}
                         style={{ objectFit: 'cover' }}
+                        loading="lazy"
                     />
 
                     <div className="picture-description">
