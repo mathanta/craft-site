@@ -9,9 +9,9 @@ export default function Main() {
       <br />
 
       <p className='welcome-message'>
-        Welcome! I'm glad that you're here.
+        Welcome! I&apos;m glad that you&apos;re here.
         Please check out some crafts that I have made.
-        If you're interested, please fill out the form
+        If you&apos;re interested, please fill out the form
         at the bottom of the page. You can send me
         a request for a craft, or even just send me
         a message. Thanks for being here!
