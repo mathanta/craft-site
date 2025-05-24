@@ -1,18 +1,18 @@
-import { readdirSync } from 'fs';
-import path from 'path';
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
 import { descriptions } from '../../../../data/descriptions';
 
 export async function GET() {
-    const imagesDirectory = path.join(process.cwd(), 'public/crafts');
-    const imageFiles = readdirSync(imagesDirectory);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/crafts/manifest.json`);
+    const imageFilesRaw = await res.json();
 
-    // Group images by base name
-    const groupedImages = imageFiles.reduce((acc, file) => {
-        // Remove 'featured-' and numbers+extension for grouping purposes
+    const imageFiles = imageFilesRaw.filter((file: string) => file !== 'manifest.json');
+
+    const groupedImages = imageFiles.reduce((acc: any, file: string) => {
         const baseName = file
-            .replace(/^featured-/, '')  // remove featured prefix first
-            .replace(/\d+\.(jpg|jpeg|png|JPEG)$/i, '');  // then remove numbers and extension
+            .replace(/^featured-/, '')
+            .replace(/\d+\.(jpg|jpeg|png|JPEG)$/i, '');
 
         if (!acc[baseName]) {
             acc[baseName] = {
@@ -21,23 +21,21 @@ export async function GET() {
             };
         }
 
-        // If any version is featured, mark the group as featured
         if (file.startsWith('featured-')) {
             acc[baseName].featured = true;
         }
 
         acc[baseName].images.push(`/crafts/${file}`);
         return acc;
-    }, {} as Record<string, { images: string[], featured: boolean }>);
+    }, {});
 
-    // Convert to array format
-    const images = Object.entries(groupedImages).map(([baseName, data]) => ({
+    const images = Object.entries(groupedImages).map(([baseName, data]: any) => ({
         images: data.images,
         title: baseName
-            .replace(/\.(jpg|jpeg|png|JPEG)$/i, '')  // remove extension from base name
+            .replace(/\.(jpg|jpeg|png|JPEG)$/i, '')
             .replace(/-/g, ' ')
             .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' '),
         description: descriptions[baseName + '.png'] || "Coming soon...",
         featured: data.featured
