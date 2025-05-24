@@ -1,80 +1,35 @@
 'use client'
-import emailjs from '@emailjs/browser';
-import { useState } from 'react';
-/*import CraftCard from '../../components/craftcards';*/
+import Link from 'next/link'
+import CraftSection from '../../components/CraftSection'
+import ContactForm from '../../components/ContactForm'
 
 export default function Main() {
-  const [status, setStatus] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('Sending...');
-
-    try {
-      await emailjs.sendForm(
-        'service_ozjqe3c',
-        'template_fnnkmzx',
-        e.currentTarget,
-        '-8abfnUvU4fDxuG4z'
-      );
-      setStatus('Something went wrong. Please try again.');
-      e.currentTarget.reset();
-      setTimeout(() => setStatus(''), 2000);
-    } catch {
-      setStatus('Message sent! Thank you.');
-      setTimeout(() => setStatus(''), 2000);
-    }
-  };
-
   return (
     <>
-      {status && (
-        <div className="status-overlay">
-          <div className="status-message">
-            {status}
-          </div>
-        </div>
-      )}
+      <br />
 
+      <p className='welcome-message'>
+        Welcome! I'm glad that you're here.
+        Please check out some crafts that I have made.
+        If you're interested, please fill out the form
+        at the bottom of the page. You can send me
+        a request for a craft, or even just send me
+        a message. Thanks for being here!
+      </p>
 
-      <div className="contact-form-container">
-        <form onSubmit={handleSubmit}>
-          <div className='form-group' id='form-title'>
-            <p>Send a Message to MiMi</p>
-          </div>
+      <br />
 
-          <div className="form-group">
-            <input
-              type="text"
-              name="user_name"
-              placeholder="Name"
-              required
-            />
-          </div>
+      <CraftSection showOnlyFeatured={true} />
 
-          <div className="form-group">
-            <input
-              type="email"
-              name="user_email"
-              placeholder="Email"
-              required
-            />
-          </div>
+      <br />
 
-          <div className="form-group">
-            <textarea
-              name="message"
-              placeholder='Custom order, question, etc...'
-              required
-              rows={4}
-            />
-          </div>
-
-          <button id='submit-button' type="submit">
-            Send
-          </button>
-        </form>
+      <div className="button-container">
+        <Link className='gallery-button' href="/gallery">Click to See More Crafts</Link>
       </div>
+
+      <br />
+
+      <ContactForm />
     </>
   );
-};
+}

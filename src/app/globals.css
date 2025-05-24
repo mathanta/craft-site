@@ -1,3 +1,4 @@
+/* Core Variables and Base Styles */
 @import "tailwindcss";
 
 :root {
@@ -29,11 +30,53 @@ body {
   position: relative;
 }
 
+/* Background Layers */
+.background-layers {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.background-layers::before,
+.background-layers::after {
+  content: "";
+  position: absolute;
+  top: 2.5%;
+  left: 2.5%;
+  width: 95%;
+  height: 95%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  transform-origin: center center;
+}
+
+.background-layers::before {
+  background: var(--background-layer-1);
+  transform: rotate(-1deg);
+}
+
+.background-layers::after {
+  background-color: var(--default-green);
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, .07) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(255, 255, 255, .13) 50%, transparent 50%),
+    linear-gradient(0deg, rgba(255, 255, 255, .07) 50%, transparent 50%),
+    linear-gradient(0deg, rgba(255, 255, 255, .13) 50%, transparent 50%);
+  background-size: 25px 25px, 50px 50px, 25px 25px, 50px 50px;
+  transform: rotate(5deg);
+  z-index: -2;
+}
+
+/* Header and Typography */
 .title-header {
   position: absolute;
-  top: 5%;
+  top: 60px;
   left: calc(250px + 5%);
   margin-top: 2rem;
+  width: fit-content;
+}
+
+.portrait-container {
   width: fit-content;
 }
 
@@ -65,118 +108,98 @@ h3 {
   font-size: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-  .title-header {
-    position: absolute;
-    top: 1rem;
-    left: 160px;
-    margin-top: 1.4rem;
-    width: 40vw;
-  }
-
-  h1 {
-    font-size: 2.8rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-}
-
-body::before,
-body::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-  transform-origin: center center;
-  width: 95%;
-  height: 95%;
-  left: 0;
-  right: 0;
-}
-
-body::before {
-  inset: 10px;
-  background: var(--background-layer-1);
-  transform: rotate(-1deg);
-}
-
-body::after {
-  inset: 10px;
-  background-color: var(--default-green);
-  background-image:
-    linear-gradient(90deg,
-      rgba(255, 255, 255, .07) 50%,
-      transparent 50%),
-    linear-gradient(90deg,
-      rgba(255, 255, 255, .13) 50%,
-      transparent 50%),
-    linear-gradient(0deg,
-      rgba(255, 255, 255, .07) 50%,
-      transparent 50%),
-    linear-gradient(0deg,
-      rgba(255, 255, 255, .13) 50%,
-      transparent 50%);
-  background-size: 25px 25px, 50px 50px, 25px 25px, 50px 50px;
-  transform: rotate(5deg);
-  z-index: -2;
-}
-
-/* Desktop styles */
-@media screen and (min-width: 769px) {
-  body {
-    padding: 40px;
-  }
-
-  body::before,
-  body::after {
-    inset: 20px;
-    width: 95%;
-    height: 95%;
-  }
-
-  body::before {
-    transform: rotate(-2deg);
-  }
-
-  body::after {
-    transform: rotate(2deg);
-    background-size: 50px 50px, 100px 100px, 50px 50px, 100px 100px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .portrait {
-    width: 160px;
-    height: 160px;
-    margin-top: 1rem;
-  }
-
-  body::before,
-  body::after {
-    width: 90%;
-    height: 90%;
-  }
-}
-
-#form-title {
-  text-align: center;
-  color: var(--default-green);
+/* Welcome Section */
+.welcome-message {
+  align-items: center;
+  font-family: var(--font-caveat-brush);
+  margin: auto 10px;
   font-size: 2rem;
-  font-family: var(--font-caveat-brush);
 }
 
-#submit-button {
-  font-size: 1.5rem;
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-button {
   font-family: var(--font-caveat-brush);
+  font-size: 1.5rem;
+}
+
+/* Craft Cards */
+.crafts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.card {
   width: fit-content;
 }
 
+.picture-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.picture {
+  margin: 15px;
+  border-radius: 15px;
+  border: 2px solid #333;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #333;
+  transition: opacity 1s ease;
+  opacity: 1;
+  max-height: 250px;
+}
+
+.picture.transitioning {
+  opacity: 0;
+}
+
+.picture-description {
+  position: absolute;
+  inset: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+}
+
+.picture-description p {
+  font-family: var(--font-caveat-brush);
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.picture-wrapper:hover .picture-description {
+  opacity: 1;
+}
+
+#picture-title {
+  margin: 5px;
+}
+
+.image-counter {
+  font-family: var(--font-caveat-brush);
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+/* Contact Form */
 .contact-form-container {
   position: relative;
   width: 100%;
@@ -193,26 +216,6 @@ body::after {
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.status-overlay {
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 1s ease-in;
-}
-
-.status-message {
-  text-align: center;
-  font-size: 1.2rem;
-  font-family: var(--font-caveat-brush);
 }
 
 .form-group {
@@ -238,7 +241,6 @@ body::after {
   color: rgba(0, 0, 0, 0.2);
 }
 
-
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -249,6 +251,19 @@ body::after {
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+#form-title {
+  text-align: center;
+  color: var(--default-green);
+  font-size: 2rem;
+  font-family: var(--font-caveat-brush);
+}
+
+#submit-button {
+  font-size: 1.5rem;
+  font-family: var(--font-caveat-brush);
+  width: fit-content;
 }
 
 .contact-form-container button {
@@ -267,7 +282,145 @@ body::after {
   background: var(--dark-green);
 }
 
+/* Form Status */
+.status-overlay {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 1s ease-in;
+}
+
+.status-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: var(--font-caveat-brush);
+}
+
+/* Footer */
+footer {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.footer-content {
+  font-family: var(--font-caveat-brush);
+  font-size: 0.8rem;
+  color: var(--dark-green);
+  opacity: 0.8;
+  cursor: default;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.footer-content:hover {
+  opacity: 0.2;
+  animation: fadeInOut 0.2s ease;
+}
+
+/* Under Construction Banner */
+.ribbon {
+  opacity: 0.5;
+  position: fixed;
+  top: 40px;
+  right: -50px;
+  width: 200px;
+  height: 25px;
+  background: repeating-linear-gradient(45deg,
+      #000,
+      #000 5px,
+      #ffd700 10px,
+      #ffd700 15px);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 25px;
+  transform: rotate(45deg);
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* Media Queries */
+@media screen and (min-width: 769px) {
+  body {
+    padding: 40px;
+  }
+
+  .background-layers::before,
+  .background-layers::after {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
+
+  .background-layers::before {
+    transform: rotate(-2deg);
+  }
+
+  .background-layers::after {
+    transform: rotate(2deg);
+    background-size: 50px 50px, 100px 100px, 50px 50px, 100px 100px;
+  }
+}
+
 @media screen and (max-width: 768px) {
+  .title-header {
+    position: absolute;
+    top: 1rem;
+    left: 160px;
+    margin-top: 1.4rem;
+    width: 40vw;
+  }
+
+  .portrait {
+    width: 160px;
+    height: 160px;
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
   .contact-form-container {
     padding: 0.25rem;
     margin: 0.5rem auto;
@@ -276,14 +429,18 @@ body::after {
   .contact-form-container form {
     padding: 0.25rem;
   }
-}
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+  .welcome-message {
+    font-size: 1rem;
   }
 
-  100% {
+  .picture {
+    width: auto;
+    min-width: 115px;
+    height: 150px;
+  }
+
+  .picture-wrapper:active .picture-description {
     opacity: 1;
   }
 }
