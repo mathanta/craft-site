@@ -43,7 +43,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Caveat Brush";
   min-height: 100vh;
   position: relative;
 }
@@ -115,24 +115,24 @@ h3 {
 h1 {
   color: var(--dark-green);
   font-size: 5.5rem;
-  font-family: "Pacifico", cursive;
+  font-family: "Pacifico";
 }
 
 h2 {
   color: var(--default-green);
   font-size: 5rem;
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
 }
 
 h3 {
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   font-size: 2rem;
 }
 
 /* Welcome Section */
 .welcome-message {
   align-items: center;
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   margin: auto 10px;
   font-size: 2rem;
 }
@@ -143,7 +143,7 @@ h3 {
 }
 
 .gallery-button {
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   font-size: 1.5rem;
 }
 
@@ -197,7 +197,7 @@ h3 {
 }
 
 .picture-description p {
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   text-align: center;
   padding: 10px;
   font-size: 1.5rem;
@@ -216,7 +216,7 @@ h3 {
 }
 
 .image-counter {
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -258,12 +258,12 @@ h3 {
   border-radius: 15px;
   font-size: normal;
   color: var(--foreground);
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   font-size: normal;
   color: rgba(0, 0, 0, 0.2);
 }
@@ -284,12 +284,12 @@ h3 {
   text-align: center;
   color: var(--default-green);
   font-size: 2rem;
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
 }
 
 #submit-button {
   font-size: 1.5rem;
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   width: fit-content;
 }
 
@@ -327,7 +327,7 @@ h3 {
 .status-message {
   text-align: center;
   font-size: 1.2rem;
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
 }
 
 /* Footer */
@@ -339,7 +339,7 @@ footer {
 }
 
 .footer-content {
-  font-family: "Caveat Brush", cursive;
+  font-family: "Caveat Brush";
   font-size: 0.8rem;
   color: var(--dark-green);
   opacity: 0.8;
