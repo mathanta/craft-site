@@ -2,13 +2,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF6F1;
-  --background-layer-1: #F5E6D3;
-  --background-layer-2: #F8F4EC;
+  --background: #faf6f1;
+  --background-layer-1: #f5e6d3;
+  --background-layer-2: #f8f4ec;
   --foreground: #171717;
   --dark-green: #636d58;
-  --default-green: #9CAF88;
+  --default-green: #9caf88;
   --border: 2px dotted black;
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("/fonts/Pacifico.woff2") format("woff2"),
+    url("/fonts/Pacifico.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caveat Brush";
+  src: url("/fonts/CaveatBrush.woff2") format("woff2"),
+    url("/fonts/CaveatBrush.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 /*@media (prefers-color-scheme: dark) {
@@ -57,11 +75,14 @@ body {
 
 .background-layers::after {
   background-color: var(--default-green);
-  background-image:
-    linear-gradient(90deg, rgba(255, 255, 255, .07) 50%, transparent 50%),
-    linear-gradient(90deg, rgba(255, 255, 255, .13) 50%, transparent 50%),
-    linear-gradient(0deg, rgba(255, 255, 255, .07) 50%, transparent 50%),
-    linear-gradient(0deg, rgba(255, 255, 255, .13) 50%, transparent 50%);
+  background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.07) 50%,
+      transparent 50%
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.13) 50%, transparent 50%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.07) 50%, transparent 50%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.13) 50%, transparent 50%);
   background-size: 25px 25px, 50px 50px, 25px 25px, 50px 50px;
   transform: rotate(5deg);
   z-index: -2;
@@ -94,24 +115,24 @@ h3 {
 h1 {
   color: var(--dark-green);
   font-size: 5.5rem;
-  font-family: var(--font-pacifico);
+  font-family: "Pacifico", cursive;
 }
 
 h2 {
   color: var(--default-green);
   font-size: 5rem;
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
 }
 
 h3 {
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   font-size: 2rem;
 }
 
 /* Welcome Section */
 .welcome-message {
   align-items: center;
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   margin: auto 10px;
   font-size: 2rem;
 }
@@ -122,7 +143,7 @@ h3 {
 }
 
 .gallery-button {
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   font-size: 1.5rem;
 }
 
@@ -175,9 +196,8 @@ h3 {
   text-align: center;
 }
 
-
 .picture-description p {
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   text-align: center;
   padding: 10px;
   font-size: 1.5rem;
@@ -186,7 +206,6 @@ h3 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
-
 
 .picture-wrapper:hover .picture-description {
   opacity: 1;
@@ -197,7 +216,7 @@ h3 {
 }
 
 .image-counter {
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -239,12 +258,12 @@ h3 {
   border-radius: 15px;
   font-size: normal;
   color: var(--foreground);
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   font-size: normal;
   color: rgba(0, 0, 0, 0.2);
 }
@@ -265,12 +284,12 @@ h3 {
   text-align: center;
   color: var(--default-green);
   font-size: 2rem;
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
 }
 
 #submit-button {
   font-size: 1.5rem;
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   width: fit-content;
 }
 
@@ -308,7 +327,7 @@ h3 {
 .status-message {
   text-align: center;
   font-size: 1.2rem;
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
 }
 
 /* Footer */
@@ -320,7 +339,7 @@ footer {
 }
 
 .footer-content {
-  font-family: var(--font-caveat-brush);
+  font-family: "Caveat Brush", cursive;
   font-size: 0.8rem;
   color: var(--dark-green);
   opacity: 0.8;
@@ -338,11 +357,13 @@ footer {
   right: -50px;
   width: 200px;
   height: 25px;
-  background: repeating-linear-gradient(45deg,
-      #000,
-      #000 5px,
-      #ffd700 10px,
-      #ffd700 15px);
+  background: repeating-linear-gradient(
+    45deg,
+    #000,
+    #000 5px,
+    #ffd700 10px,
+    #ffd700 15px
+  );
   color: white;
   font-weight: bold;
   text-align: center;
@@ -350,6 +371,7 @@ footer {
   transform: rotate(45deg);
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: default;
 }
 
 /* Animations */
