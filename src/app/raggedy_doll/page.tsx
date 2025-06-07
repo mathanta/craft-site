@@ -7,10 +7,10 @@ export default function Raggedy_Doll() {
 
       <p className="raggedy-story">
         In 1915, writer and artist Johnny Gruelle created Raggedy Ann after
-        finding an old rag doll in his parents' attic. Named by combining two
-        James Whitcomb Riley poems - "The Raggedy Man" and "Little Orphant
-        Annie" - the doll was inspired by watching his daughter Marcella play
-        with dolls.
+        finding an old rag doll in his parents&apos; attic. Named by combining
+        two James Whitcomb Riley poems - &quot;The Raggedy Man&quot; and
+        &quot;Little Orphant Annie&quot; - the doll was inspired by watching his
+        daughter Marcella play with dolls.
       </p>
 
       <br />
@@ -19,7 +19,7 @@ export default function Raggedy_Doll() {
         The first Raggedy Ann book was published in 1918, followed by the
         introduction of her brother Raggedy Andy in 1920. The P.F. Volland
         Company began mass-producing the dolls, which quickly became beloved
-        children's icons, appearing in books, films, and television shows.
+        children&apos;s icons, appearing in books, films, and television shows.
       </p>
 
       <br />
