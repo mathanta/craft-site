@@ -1,9 +1,27 @@
+import Image from "next/image";
+
 export default function Raggedy_Doll() {
   return (
     <div className="raggedy-history">
       <h3>The Story of Raggedy Ann</h3>
 
       <br />
+      <div className="background-grid">
+        <Image
+          className="raggedy-image"
+          src="/raggedy_dolls.jpg"
+          alt="raggedy_dolls"
+          width={200}
+          height={200}
+        />
+        <Image
+          className="raggedy-image"
+          src="/raggedy-ann-andy.png"
+          alt="raggedy_dolls"
+          width={200}
+          height={200}
+        />
+      </div>
 
       <p className="raggedy-story">
         In 1915, writer and artist Johnny Gruelle created Raggedy Ann after

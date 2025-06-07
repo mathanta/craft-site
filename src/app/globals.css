@@ -492,11 +492,58 @@ footer {
   }
 }
 
-/*Story Paragraphs*/
+/*Story Page*/
+
+.raggedy-history {
+  position: relative;
+}
 
 .raggedy-story {
-  margin: 0px 5rem;
+  position: relative;
+  z-index: 2;
+  margin: 0px 1rem; /* Smaller margin for mobile */
   text-indent: 2rem;
+}
+
+.background-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 1rem;
+  z-index: 1;
+  opacity: 0.4;
+  padding: 1rem;
+}
+
+.raggedy-image {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  min-width: 150px; /* Minimum size on mobile */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .raggedy-story {
+    margin: 0px 5rem;
+  }
+
+  .background-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .background-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /*Raggedy Button*/
@@ -510,21 +557,47 @@ footer {
   background-color: rgb(255, 253, 136);
   position: absolute;
   clip-path: polygon(
-    50% 0%, 57% 15%, 65% 10%, 70% 20%, 80% 15%, 
-    82% 25%, 90% 25%, 87% 35%, 95% 40%, 88% 45%, 
-    93% 55%, 85% 57%, 88% 70%, 78% 68%, 77% 80%, 
-    67% 75%, 62% 85%, 54% 77%, 50% 90%, 46% 77%, 
-    38% 85%, 33% 75%, 23% 80%, 22% 68%, 12% 70%, 
-    15% 57%, 7% 55%, 12% 45%, 5% 40%, 13% 35%, 
-    10% 25%, 18% 25%, 20% 15%, 30% 20%, 35% 10%, 
+    50% 0%,
+    57% 15%,
+    65% 10%,
+    70% 20%,
+    80% 15%,
+    82% 25%,
+    90% 25%,
+    87% 35%,
+    95% 40%,
+    88% 45%,
+    93% 55%,
+    85% 57%,
+    88% 70%,
+    78% 68%,
+    77% 80%,
+    67% 75%,
+    62% 85%,
+    54% 77%,
+    50% 90%,
+    46% 77%,
+    38% 85%,
+    33% 75%,
+    23% 80%,
+    22% 68%,
+    12% 70%,
+    15% 57%,
+    7% 55%,
+    12% 45%,
+    5% 40%,
+    13% 35%,
+    10% 25%,
+    18% 25%,
+    20% 15%,
+    30% 20%,
+    35% 10%,
     43% 15%
   );
   display: grid;
   place-items: center;
   opacity: 0;
-  animation: 
-    popAndShake 1s ease-in-out 1s 1,
-    periodicShake 5s 2s infinite;
+  animation: popAndShake 1s ease-in-out 1s 1, periodicShake 5s 2s infinite;
   transform-origin: center;
 }
 
@@ -532,7 +605,6 @@ footer {
   padding: 1.5rem;
   margin-bottom: 10px;
 }
-
 
 @keyframes popAndShake {
   0% {
