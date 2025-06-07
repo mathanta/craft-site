@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "MiMi's Workshop",
-  description: "I love dolls.",
+  description: "I love dolls!",
 };
 
 export default function RootLayout({

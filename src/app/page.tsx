@@ -2,10 +2,13 @@
 import Link from "next/link";
 import CraftSection from "../../components/CraftSection";
 import ContactForm from "../../components/ContactForm";
+import RaggedyButton from "../../components/RaggedyButton";
 
 export default function Main() {
   return (
     <>
+      <RaggedyButton />
+
       <br />
 
       <p className="welcome-message">

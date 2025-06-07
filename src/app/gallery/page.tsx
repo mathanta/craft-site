@@ -1,7 +1,12 @@
-import CraftSection from "../../../components/CraftSection"
+import CraftSection from "../../../components/CraftSection";
+import RaggedyButton from "../../../components/RaggedyButton";
 
 export default function Gallery() {
-    return (
-        <CraftSection />
-    )
-};
+  return (
+    <>
+      <RaggedyButton />
+      <br />
+      <CraftSection />
+    </>
+  );
+}
